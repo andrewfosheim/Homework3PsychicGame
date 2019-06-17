@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Psychic Game</title>
+</head>
+
+<body>
+<div id="thePsychicGame">
+    <h1><strong>The Psychic Game </strong></h1>
+    <h2> Guess what letter I'm thinking of: </h2>
+</div>
+
+    <Script type="text/javascript">
+        var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+// Variables for tracking begin at 0, except for guessesLeft which starts at 10 and counts 
+// down to yourGuessesSoFar starts at 0, but wwill be listing the letters chosen by the user.
+        
+        var wins = 0;
+        var losses = 0;
+        var guessesLeft = 10;
+        var yourGuessesSoFar = []; // Shows user guesses in an array
+      
+
+// When the user presses a letter it will run the following function:
+var computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
+            console.log(computerChoice);
+        document.onkeyup = function(event) {
+            var userGuess = event.key; // Variable captures user guess
+            yourGuessesSoFar.push(userGuess); // Adds userGuess to yourGuessesSoFar array
+          
+            
+           
+           
+// If your guess matches the computers guess then Wins increases by 1. If not, then guesses left decreases by 1. 
+// If guesses left === 0, Lossses increases by 1 and points should restart although I'm not sure how it knows how to do that.
+            if (userGuess === computerChoice){
+                wins++;
+                guessesLeft = 10;
+            } 
+            else {
+                guessesLeft--;
+            }
+            if (guessesLeft === 0){
+                losses++;
+                yourGuessesSoFar === 0;
+                guessesLeft = 10;            
+            }    
+   
+    
+        var html = "<h2>Guess what letter I'm thinking of:</h2>" + "<p>Wins: " + wins + "</p>" + "<p>Losses: "+ losses + "<p>Guesses Left " + guessesLeft + "<p>Guessed Letter: " +  yourGuessesSoFar.join(' '); //Show guessed letters here
+    document.querySelector("#thePsychicGame").innerHTML = html;
+    }
+   
+    </Script>
+
+</body>
+
+</html>
+
