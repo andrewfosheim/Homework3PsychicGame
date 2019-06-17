@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Number Game</title>
+</head>
+
+<body>
+    <h1>
+        <strong>The Psychic Game </strong>
+    </h1>
+    <h2>
+        Guess what letter I'm thinking of.
+    </h2>
+    <div>
+        <p id="wins-text">Wins:</p>
+        <p id="losses-text">Losses:</p>
+        <p id="guessesleft-text">Guesses left:</p>
+        <p id="yourguessessofar-text">Your guesses so far:</p>
+        </p>
+    </div>
+
+    <Script type="text/javascript">
+        var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+// Variables for tracking begin at 0, except for guessesLeft which starts at 10 and counts 
+// down to yourGuessesSoFar starts at 0, but wwill be listing the letters chosen by the user.
+        
+        var wins = 0
+        var losses = 0
+        var guessesLeft = 10
+        var yourGuessesSoFar = [] // Shows user guesses in an array
+
+        var winsText = document.getElementById("wins-text");
+        var lossesText = document.getElementById("losses-text");
+        var guessesLeftText = document.getElementById("guessesleft-text");
+        var yourGuessesSoFarText = document.getElementById("yourguessessofar-text");
+
+      
+
+// When the user presses a letter it will run the following function:
+        
+        document.onkeyup = function (event) {
+            var userGuess = event.key; // Variable captures user guess
+            yourGuessesSoFar.push(userGuess); // Adds userGuess to yourGuessesSoFar array
+            var computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
+            console.log(computerChoice);
+           
+           
+// If your guess matches the computers guess then Wins increases by 1. If not, then guesses left decreases by 1. 
+// If guesses left === 0, Lossses increases by 1 and points should restart although I'm not sure how it knows how to do that.
+            if(userGuess === computerChoice){
+                wins++;
+            } 
+            else{
+                guessesLeft--;
+            }
+            if(guessesleft === 0){
+                losses++;
+                guessesLeft == 10;            }
+        }    
+   
+    document.getElementById('wins').innerHTML = wins;
+    document.getElementById('losses').innerHTML = losses;
+    document.getElementById('guessesLeft').innerHTML = guessesLeft;
+   
+    </Script>
+
+
+
+    </Script>
+
+</body>
+
+</html>
